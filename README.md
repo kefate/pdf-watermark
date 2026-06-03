@@ -4,6 +4,10 @@
 
 PDF Watermark Studio is a local-first web app for adding tiled text watermarks to every page of a PDF. It runs entirely in the browser, previews the first five pages, and lets users adjust watermark text, color, size, spacing, and opacity before generating a new PDF.
 
+## Preview
+
+![PDF Watermark Studio English sample](docs/0.1.0-sample-en.png)
+
 ## Privacy Model
 
 - PDF files are read in the browser and are never uploaded by the app.

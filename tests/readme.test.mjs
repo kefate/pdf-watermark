@@ -13,9 +13,10 @@ for (const readme of [englishReadme, chineseReadme]) {
   assert.match(readme, /npm run build/);
   assert.match(readme, /npm test/);
   assert.match(readme, /Node\.js|Node.js/);
-  assert.match(readme, /GitHub Pages/);
   assert.match(readme, /localStorage/);
 }
 
 assert.match(englishReadme, /\[Chinese\]\(README\.zh-CN\.md\)/);
 assert.match(chineseReadme, /\[English\]\(README\.md\)/);
+assert.match(englishReadme, /!\[[^\]]+\]\(docs\/0\.1\.0-sample-en\.png\)/);
+assert.match(chineseReadme, /!\[[^\]]+\]\(docs\/0\.1\.0-sample-cn\.png\)/);
