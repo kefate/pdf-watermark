@@ -24,15 +24,20 @@ assert.ok(lockfile.packages["node_modules/pdf-lib"]);
 assert.ok(lockfile.packages["node_modules/pdfjs-dist"]);
 assert.ok(lockfile.packages["node_modules/vite"]);
 
-assert.match(workflow, /actions\/checkout@v4/);
-assert.match(workflow, /actions\/setup-node@v4/);
+assert.match(workflow, /actions\/checkout@v6/);
+assert.match(workflow, /actions\/setup-node@v6/);
 assert.match(workflow, /node-version:\s*22/);
 assert.match(workflow, /npm ci/);
 assert.match(workflow, /npm test/);
 assert.match(workflow, /npm run build/);
-assert.match(workflow, /actions\/upload-pages-artifact@v3/);
-assert.match(workflow, /actions\/deploy-pages@v4/);
+assert.match(workflow, /actions\/upload-pages-artifact@v5/);
+assert.match(workflow, /actions\/deploy-pages@v5/);
 assert.match(workflow, /path:\s*dist/);
+assert.doesNotMatch(workflow, /actions\/checkout@v4/);
+assert.doesNotMatch(workflow, /actions\/setup-node@v4/);
+assert.doesNotMatch(workflow, /actions\/upload-pages-artifact@v3/);
+assert.doesNotMatch(workflow, /actions\/deploy-pages@v4/);
+assert.doesNotMatch(workflow, /actions\/configure-pages@v5/);
 
 assert.match(gitignore, /node_modules\//);
 assert.match(gitignore, /dist\//);
