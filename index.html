@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF Watermark</title>
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-labelledby="app-title">
+        <header class="top-bar">
+          <div class="title-block">
+            <p class="eyebrow" data-i18n="appKicker">Local document desk</p>
+            <h1 id="app-title" data-i18n="appTitle">PDF Watermark Studio</h1>
+          </div>
+
+          <div class="language-switch" role="group" aria-label="Language">
+            <button class="language-option" type="button" data-language="en">EN</button>
+            <button class="language-option" type="button" data-language="zh">ZH</button>
+          </div>
+        </header>
+
+        <div class="tool" id="watermark-form">
+          <aside class="control-column">
+            <section class="panel upload-panel" aria-labelledby="upload-title">
+              <div class="panel-heading">
+                <p class="section-label" id="upload-title" data-i18n="uploadTitle">PDF file</p>
+              </div>
+
+              <label class="file-picker">
+                <input id="pdf-file" type="file" accept="application/pdf,.pdf" />
+                <span class="file-mark" aria-hidden="true">PDF</span>
+                <span class="file-copy">
+                  <strong data-i18n="uploadIdle">Select a PDF</strong>
+                  <span id="file-meta" data-i18n="uploadMetaIdle">No file selected</span>
+                </span>
+              </label>
+            </section>
+
+            <section class="panel settings-panel" aria-labelledby="settings-title">
+              <div class="panel-heading">
+                <p class="section-label" id="settings-title" data-i18n="controlsTitle">Watermark</p>
+              </div>
+
+              <label class="field">
+                <span data-i18n="textLabel">Text</span>
+                <input id="watermark-text" type="text" value="CONFIDENTIAL" maxlength="80" />
+              </label>
+
+              <div class="field color-field">
+                <span data-i18n="colorLabel">Color</span>
+                <div class="color-control">
+                  <input id="watermark-color" type="color" value="#1f2937" />
+                  <div class="color-swatches" role="group" data-i18n-aria-label="colorQuickGroup">
+                    <button class="color-swatch color-swatch-black" type="button" data-color="#000000" data-i18n-aria-label="colorBlack"></button>
+                    <button class="color-swatch color-swatch-white" type="button" data-color="#ffffff" data-i18n-aria-label="colorWhite"></button>
+                    <button class="color-swatch color-swatch-gray" type="button" data-color="#808080" data-i18n-aria-label="colorGray"></button>
+                    <button class="color-swatch color-swatch-red" type="button" data-color="#dc2626" data-i18n-aria-label="colorRed"></button>
+                    <button class="color-swatch color-swatch-blue" type="button" data-color="#2563eb" data-i18n-aria-label="colorBlue"></button>
+                  </div>
+                </div>
+              </div>
+
+              <label class="field">
+                <span><span data-i18n="sizeLabel">Size</span> <output id="font-size-value">42</output></span>
+                <input id="font-size" type="range" min="12" max="120" value="42" />
+              </label>
+
+              <label class="field">
+                <span><span data-i18n="gapLabel">Spacing</span> <output id="gap-value">120</output></span>
+                <input id="gap" type="range" min="24" max="360" value="120" />
+              </label>
+
+              <label class="field">
+                <span><span data-i18n="opacityLabel">Opacity</span> <output id="opacity-value">22%</output></span>
+                <input id="opacity" type="range" min="0.05" max="1" step="0.01" value="0.22" />
+              </label>
+            </section>
+
+            <form class="panel action-panel" aria-label="Generate" id="generate-form">
+              <button id="generate-button" type="submit" disabled data-i18n="generateButton">Generate PDF</button>
+              <a id="download-link" class="download-link" hidden data-i18n="downloadButton">Download</a>
+              <p id="status" role="status" data-i18n="statusSelectFile">Select a PDF file.</p>
+            </form>
+          </aside>
+
+          <section class="panel preview-panel" aria-labelledby="preview-title">
+            <div class="panel-heading preview-heading">
+              <p class="section-label" id="preview-title" data-i18n="previewTitle">First page preview</p>
+              <span class="preview-state" id="preview-state" data-i18n="statusNoPreview">Preview appears after selecting a PDF.</span>
+            </div>
+            <div class="preview-stage">
+              <div class="preview-scroll">
+                <canvas id="watermark-preview" width="1200" height="900"></canvas>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <footer class="privacy-footer" aria-label="Project information">
+          <p data-i18n="privacyLine">🔒 No external network requests · Offline-capable · Privacy first</p>
+          <a href="https://github.com/kefate/pdf-watermark" target="_blank" rel="noreferrer" data-i18n="githubLink">GitHub ↗</a>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

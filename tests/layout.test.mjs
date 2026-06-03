@@ -1,0 +1,37 @@
+import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+
+const css = await fs.readFile(new URL("../src/styles.css", import.meta.url), "utf8");
+const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8");
+
+assert.match(css, /\.preview-panel\s*\{[^}]*height:\s*100%;/s);
+assert.match(css, /\.app-shell\s*\{[^}]*padding:\s*34px;/s);
+assert.match(css, /\.upload-panel\s*\{[^}]*min-height:\s*232px;/s);
+assert.match(css, /\.file-picker\s*\{[^}]*min-height:\s*190px;/s);
+assert.match(css, /\.settings-panel\s*\{[^}]*gap:\s*21px;/s);
+assert.match(css, /\.action-panel\s*\{[^}]*padding:\s*20px;/s);
+assert.match(css, /button,\s*\.download-link\s*\{[^}]*min-height:\s*54px;/s);
+assert.match(css, /\.preview-panel\s*\{[^}]*min-height:\s*0;/s);
+assert.match(css, /\.preview-panel\s*\{[^}]*grid-template-rows:\s*auto minmax\(0,\s*1fr\);/s);
+assert.match(css, /\.control-column\s*\{[^}]*height:\s*100%;/s);
+assert.match(css, /\.preview-stage\s*\{[^}]*position:\s*relative;/s);
+assert.match(css, /\.preview-stage\s*\{[^}]*min-height:\s*0;/s);
+assert.match(css, /\.preview-stage\s*\{[^}]*overflow:\s*hidden;/s);
+assert.match(css, /\.preview-scroll\s*\{[^}]*position:\s*absolute;/s);
+assert.match(css, /\.preview-scroll\s*\{[^}]*inset:\s*14px;/s);
+assert.match(css, /\.preview-scroll\s*\{[^}]*overflow:\s*auto;/s);
+assert.doesNotMatch(css, /#watermark-preview\s*\{[^}]*min-height:/s);
+assert.match(css, /@media \(max-width: 680px\)/);
+assert.doesNotMatch(css, /@media \(max-width: 1120px\)/);
+assert.match(html, /<div class="preview-scroll">\s*<canvas id="watermark-preview"/s);
+assert.match(html, /class="privacy-footer"/);
+assert.match(html, /href="https:\/\/github\.com\/kefate\/pdf-watermark"/);
+assert.match(html, /data-i18n="privacyLine"/);
+assert.match(html, /data-i18n="githubLink"/);
+assert.match(css, /\.privacy-footer\s*\{/);
+assert.match(css, /\.privacy-footer\s*\{[^}]*display:\s*grid;/s);
+assert.match(css, /\.privacy-footer\s*\{[^}]*justify-items:\s*center;/s);
+assert.match(css, /\.privacy-footer\s*\{[^}]*border-top:\s*1px solid var\(--line\);/s);
+assert.match(css, /\.privacy-footer\s*\{[^}]*background:\s*transparent;/s);
+assert.match(css, /\.privacy-footer\s*\{[^}]*box-shadow:\s*none;/s);
+assert.match(css, /\.privacy-footer p\s*\{[^}]*text-align:\s*center;/s);
