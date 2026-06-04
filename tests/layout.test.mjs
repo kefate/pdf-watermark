@@ -6,6 +6,8 @@ const html = await fs.readFile(new URL("../index.html", import.meta.url), "utf8"
 
 assert.match(css, /\.preview-panel\s*\{[^}]*height:\s*100%;/s);
 assert.match(css, /\.app-shell\s*\{[^}]*padding:\s*34px;/s);
+assert.match(css, /\.app-shell\s*\{[^}]*display:\s*grid;/s);
+assert.match(css, /\.app-shell\s*\{[^}]*align-items:\s*center;/s);
 assert.match(css, /\.upload-panel\s*\{[^}]*min-height:\s*232px;/s);
 assert.match(css, /\.file-picker\s*\{[^}]*min-height:\s*190px;/s);
 assert.match(css, /\.settings-panel\s*\{[^}]*gap:\s*21px;/s);
